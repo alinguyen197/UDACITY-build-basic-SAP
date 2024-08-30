@@ -50,4 +50,8 @@ module.exports = {
       protectWebpackAssets: false,
     }),
   ],
+  devServer: {
+    port: 3000,
+    allowedHosts: ["all"],
+  },
 };

@@ -31,7 +31,15 @@ app.get('/test', function (req, res) {
     res.json(mockAPIResponse);
 })
 
+// Example create route
+app.get('/example', controller);
+// Example create controller
+function controller(req, res) {
+    res.send("");
+};
+
+
 // designates what port the app will listen to for incoming requests
-app.listen(8081, function () {
-    console.log('Example app listening on port 8081!')
+app.listen(8080, function () {
+    console.log('Example app listening on port 8080!')
 })
