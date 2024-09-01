@@ -2,4 +2,8 @@ header {
     display: flex;
     justify-content: space-between;
     padding: 10px 40px;
+    position: sticky;
+    height: 50px;
+    top: 0;
+    background-color: burlywood;
 }

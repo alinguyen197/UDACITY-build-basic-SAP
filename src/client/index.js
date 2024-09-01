@@ -1,14 +1,8 @@
 import { checkForName } from "./js/nameChecker";
 import { handleSubmit, onBlur } from "./js/formHandler";
+import "./styles/main.scss";
 
-import "./styles/resets.scss";
-import "./styles/base.scss";
-import "./styles/form.scss";
-import "./styles/footer.scss";
-import "./styles/header.scss";
 
-console.log(checkForName);
-
-// alert("I EXIST")
-
+// khi export ở đây để có thể sài hàm ở file html or js khác
+// phần output Client in file webpack
 export { checkForName, handleSubmit, onBlur };
