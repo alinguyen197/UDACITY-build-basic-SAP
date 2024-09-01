@@ -30,6 +30,18 @@ module.exports = {
         test: /\.scss$/,
         use: ["style-loader", "css-loader", "sass-loader"],
       },
+      {
+        test: /\.(png|jpg|gif|svg)$/i,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name].[ext]",
+              context: "src/client/images", // Optional: Change base path if needed
+            },
+          },
+        ],
+      },
     ],
   },
   plugins: [

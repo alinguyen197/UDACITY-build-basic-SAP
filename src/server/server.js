@@ -3,7 +3,7 @@ const express = require("express");
 const mockAPIResponse = require("./mockAPI.js");
 var bodyParser = require("body-parser");
 var cors = require("cors");
-const { geonamesAPI } = require("./services.js");
+const { geonamesAPI, weatherAPI, pixabayAPI } = require("./services.js");
 
 var json = {
   title: "test json response",
@@ -46,10 +46,28 @@ app.get("/geonames/search", async function (req, res) {
 });
 
 // Weather
-app.get("/weather/search", function (req, res) {});
+app.get("/weather/search", async function (req, res) {
+  const lat = req.query.lat;
+  const lon = req.query.lon;
+  const data = await weatherAPI.getWeather(lat,lon);
+  try {
+    return res.json(data);
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 // Pixabay
-app.get("/pixabay/search", function (req, res) {});
+app.get("/pixabay/search", async function (req, res) {
+  const location = req.query.q;
+  console.log(location)
+  const data = await pixabayAPI.getImage(location);
+  try {
+    return res.json(data);
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 // Example create route
 app.get("/example", controller);
