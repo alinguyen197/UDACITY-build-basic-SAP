@@ -36,9 +36,9 @@ app.get("/test", function (req, res) {
 
 // Geonames
 app.get("/geonames/search", async function (req, res) {
-  const location = req.query.q;
-  const data = await geonamesAPI.search(location);
   try {
+    const location = req.query.q;
+    const data = await geonamesAPI.search(location);
     return res.json(data);
   } catch (error) {
     console.log(error);
@@ -47,10 +47,10 @@ app.get("/geonames/search", async function (req, res) {
 
 // Weather
 app.get("/weather/search", async function (req, res) {
-  const lat = req.query.lat;
-  const lon = req.query.lon;
-  const data = await weatherAPI.getWeather(lat,lon);
   try {
+    const lat = req.query.lat;
+    const lon = req.query.lon;
+    const data = await weatherAPI.getWeather(lat,lon);
     return res.json(data);
   } catch (error) {
     console.log(error);
@@ -59,10 +59,9 @@ app.get("/weather/search", async function (req, res) {
 
 // Pixabay
 app.get("/pixabay/search", async function (req, res) {
-  const location = req.query.q;
-  console.log(location)
-  const data = await pixabayAPI.getImage(location);
   try {
+    const location = req.query.q;
+    const data = await pixabayAPI.getImage(location);
     return res.json(data);
   } catch (error) {
     console.log(error);

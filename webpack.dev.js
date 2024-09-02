@@ -36,8 +36,8 @@ module.exports = {
           {
             loader: "file-loader",
             options: {
-              name: "[name].[ext]",
-              context: "src/client/images", // Optional: Change base path if needed
+              name: "[path][name].[ext]",
+              context: "src/client", // Optional: Change base path if needed
             },
           },
         ],
