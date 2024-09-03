@@ -1,4 +1,5 @@
 const fetch = require("node-fetch");
+
 const geonamesAPI = {
   username: "alinguyen197",
   search: function (query) {
@@ -25,8 +26,9 @@ const weatherAPI = {
 
 const pixabayAPI = {
   getImage: function (location) {
+    const newLocation = encodeURIComponent(location)
     return fetch(
-      `https://pixabay.com/api/?key=24377852-07552f4406f3b56731a65e887&q=${location}&image_type=photo&pretty=true`
+      `https://pixabay.com/api/?key=24377852-07552f4406f3b56731a65e887&q=${newLocation}&image_type=photo&pretty=true`
     )
       .then((response) => {
         return response.json();

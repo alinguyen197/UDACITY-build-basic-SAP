@@ -8,7 +8,7 @@ function ClientServices() {
       headers: {
         "Content-Type": "application/json",
       },
-    });
+    }).then(response => response.json());
   };
 
   const post = async (url, data) => {

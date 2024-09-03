@@ -6,6 +6,13 @@ body {
 
 main {
   flex: 2;
+  @media screen and (max-width: 480px) {
+    padding: 10px;
+  }
+  @media screen and (max-width: 768px) {
+    // background-color: red;
+    padding: 20px
+  }
 }
 
 .loading {

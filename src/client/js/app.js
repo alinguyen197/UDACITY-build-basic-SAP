@@ -18,31 +18,37 @@ async function handleSearch(e) {
     errorElement.innerHTML = "Please input location and date !!!";
     return;
   }
-  clearData()
+  clearData();
 
   const params = new URLSearchParams({
     q: valueInput.location,
   });
 
   setLoading(loadingElement);
-  const geonamesData = await clientServices.get(`/geonames/search?${params}`).then((response) => response.json());
+  const geonamesData = await clientServices.get(`/geonames/search?${params}`);
   console.log("geonamesData", geonamesData);
   const weatherParams = new URLSearchParams({
     lat: geonamesData.geonames[0].lat,
     lon: geonamesData.geonames[0].lng,
   });
-  
-  const weatherData = await clientServices.get(`/weather/search?${weatherParams}`).then((response) => response.json());
+
+  const weatherData = await clientServices.get(`/weather/search?${weatherParams}`);
   console.log("weatherData", weatherData);
   const pixaParams = new URLSearchParams({
     q: weatherData.city_name,
   });
-  const pixabayData = await clientServices.get(`/pixabay/search?${pixaParams}`).then((response) => response.json());
+  const pixabayData = await clientServices.get(`/pixabay/search?${pixaParams}`);
   console.log("pixabayData", pixabayData);
   resultsElement.style.display = "block";
-  resultsElement.innerHTML = `
-  <img src="${pixabayData.hits[2].largeImageURL}" />
-  `;
+  if (pixabayData.hits.length === 0) {
+    resultsElement.innerHTML = `
+    No data
+    `;
+  } else {
+    resultsElement.innerHTML = `
+    <img src="${pixabayData.hits[2].largeImageURL}" />
+    `;
+  }
   hideLoading(loadingElement);
 }
 
@@ -58,6 +64,6 @@ const hideLoading = (loadingElement) => {
 const clearData = () => {
   resultsElement.innerHTML = "";
   errorElement.remove();
-}
+};
 
 export { handleSearch };
