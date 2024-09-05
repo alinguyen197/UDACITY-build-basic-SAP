@@ -27,6 +27,11 @@ form {
         width: 100%;
         margin-top: 10px;
         padding: 15px;
+        border-radius: 20px;
+        border: 1px solid #ccc;
+        &:focus{
+          outline-color: #DEB887;
+        }
     }
 
   }
